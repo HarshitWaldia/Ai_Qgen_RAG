@@ -1,0 +1,102 @@
+erDiagram
+
+    BRANCHES {
+        int id PK
+        string branch_name
+        string branch_code
+    }
+
+    SEMESTERS {
+        int id PK
+        int semester_number
+    }
+
+    SUBJECTS {
+        int id PK
+        string subject_name
+        string subject_code
+        int branch_id FK
+        int semester_id FK
+    }
+
+    QUESTION_PAPERS {
+        int id PK
+        string title
+        date exam_date
+        int total_marks
+        int duration_minutes
+        int branch_id FK
+        int semester_id FK
+        int subject_id FK
+    }
+
+    SECTIONS {
+        int id PK
+        int paper_id FK
+        string section_name
+        string section_name_hindi
+        text instructions
+        text instructions_hindi
+        int max_questions
+        int marks
+    }
+
+    QUESTIONS {
+        int id PK
+        int section_id FK
+        int question_number
+        string question_type
+        text question_text_en
+        text question_text_hi
+        int marks
+        boolean is_compulsory
+    }
+
+    OPTIONS {
+        int id PK
+        int question_id FK
+        string option_label
+        text option_text_en
+        text option_text_hi
+        boolean is_correct
+    }
+
+    ANSWERS {
+        int id PK
+        int question_id FK
+        text answer_text_en
+        text answer_text_hi
+        text explanation_en
+        text explanation_hi
+    }
+
+    USERS {
+        int id PK
+        string name
+        string email
+        string password_hash
+        string role
+    }
+
+    ADMINS {
+        int id PK
+        int user_id FK
+        json permissions
+    }
+
+    %% Relationships
+
+    BRANCHES ||--o{ SUBJECTS : has
+    SEMESTERS ||--o{ SUBJECTS : has
+
+    SUBJECTS ||--o{ QUESTION_PAPERS : contains
+    BRANCHES ||--o{ QUESTION_PAPERS : belongs_to
+    SEMESTERS ||--o{ QUESTION_PAPERS : belongs_to
+
+    QUESTION_PAPERS ||--o{ SECTIONS : has
+    SECTIONS ||--o{ QUESTIONS : has
+
+    QUESTIONS ||--o{ OPTIONS : has
+    QUESTIONS ||--|| ANSWERS : has
+
+    USERS ||--o| ADMINS : is

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI Question Paper Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>📄 AI Question Paper Generator</h1>
+            <p>Upload your syllabus or study material and generate perfectly formatted assessments.</p>
+        </header>
+
+        <div class="card">
+            <h3>1. Upload Material</h3>
+            <input type="file" id="pdfUpload" accept=".pdf" />
+            <button id="uploadBtn">Upload Context</button>
+            <span id="uploadStatus"></span>
+        </div>
+
+        <div class="card" id="configCard" style="display: none;">
+            <h3>2. Configure Assessment</h3>
+            <div class="row">
+                <label>Language:</label>
+                <select id="language">
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                </select>
+            </div>
+
+            <!-- Sections will be injected here -->
+            <div id="sectionsContainer"></div>
+
+            <!-- NEW: Add Section Button -->
+            <button id="addSectionBtn" style="background-color: #6c757d; margin-bottom: 20px;">+ Add Another
+                Section</button>
+            <br>
+
+            <button id="generateBtn">Generate Paper</button>
+            <div id="loader" style="display:none;">🤖 AI is carefully reading and generating...</div>
+        </div>
+
+        <div class="card" id="resultCard" style="display: none;">
+            <h3>3. Download Results</h3>
+            <p>Paper and Answer Keys ready strictly based on your context!</p>
+            <div class="downloads">
+                <a id="btnDocx" class="btn">⬇️ Question Paper (.docx)</a>
+                <a id="btnPdf" class="btn">⬇️ Question Paper (.pdf)</a>
+                <a id="btnKey" class="btn btn-dark">⬇️ Answer Key (.docx)</a>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

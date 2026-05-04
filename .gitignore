@@ -1,0 +1,12 @@
+venv/
+env/
+aiqgen/
+__pycache__/
+*.pyc
+.env
+data/chromadb/
+Lib/
+Scripts/
+Include/
+*.pt
+*.pth
