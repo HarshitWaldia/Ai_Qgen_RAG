@@ -273,12 +273,6 @@ Section D: Case Study (2)
 
 ---
 
-## 📜 License
-
-MIT License
-
----
-
 ## 👨‍💻 Author
 
 **Harshit Waldia**
@@ -288,5 +282,3 @@ MIT License
 ## ⭐ Support
 
 If this project helps you, consider giving it a ⭐ on GitHub!
-
----
